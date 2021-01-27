@@ -56,3 +56,17 @@ jobs:
           codeCoverageTool: Cobertura
           summaryFileLocation: coverage.xml
         condition: succeededOrFailed()
+      - script: |
+    python setup.py sdist
+  displayName: 'Artifact creation'
+
+- task: CopyFiles@2
+  inputs:
+    targetFolder: $(Build.ArtifactStagingDirectory)
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'dist'
+    publishLocation: 'Container'       
+ 
