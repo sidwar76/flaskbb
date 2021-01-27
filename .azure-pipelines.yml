@@ -57,8 +57,8 @@ jobs:
           summaryFileLocation: coverage.xml
         condition: succeededOrFailed()
       - script: |
-    python setup.py sdist
-      displayName: 'Artifact creation'
+         python setup.py sdist
+          displayName: 'Artifact creation'
 
 - task: CopyFiles@2
   inputs:
